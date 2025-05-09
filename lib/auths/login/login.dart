@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/auths/forgotpassword/index.dart';
+import 'package:patient_app/auths/registration/register.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,6 +14,11 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _isObscured = true;
+  bool _isLoading = true;
+
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -101,7 +110,9 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ForgetPassword()),
+                          MaterialPageRoute(
+                            builder: (context) => ForgetPassword(),
+                          ),
                         );
                       },
                       child: Text(
@@ -192,7 +203,7 @@ class _LoginState extends State<Login> {
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 4,
+                // spacing: 4,
                 children: [
                   Text(
                     "Don’t have an account? ",
@@ -202,13 +213,20 @@ class _LoginState extends State<Login> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-
-                  Text(
-                    "Register now",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0x92176354),
-                      fontWeight: FontWeight.w600,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Register()),
+                      );
+                    },
+                    child: Text(
+                      "Register now",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0x92176354),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],

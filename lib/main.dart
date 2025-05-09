@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/onboarding/onboarding1.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
 }
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
 
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
